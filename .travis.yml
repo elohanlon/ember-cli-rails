@@ -1,4 +1,6 @@
 language: ruby
+node_js:
+  - "7"
 sudo: false
 cache: bundler
 notifications:
