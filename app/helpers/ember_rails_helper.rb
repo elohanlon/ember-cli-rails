@@ -8,6 +8,12 @@ module EmberRailsHelper
 
     head, body = markup_capturer.capture
 
-    render text: EmberCli[name].index_html(head: head, body: body).html_safe
+    content = EmberCli[name].index_html(head: head, body: body).html_safe
+
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('5.1.0')
+      render plain: content
+    else
+      render text: content
+    end
   end
 end
